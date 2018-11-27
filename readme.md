@@ -32,7 +32,7 @@ I chose LGBMRegressor, the sklearn-way wrapped gradient boosting decision tree m
 Also, I made several experiments with adding new features and adjusting LGBM hyperparameters.<br>
 	- I added a length of a search term in number letters and words.
 	- I added brand attribute and occurrence ratio of search term words in brand
-	- I also added a feature for matching word including matching their Part-Of-Speech tag.
+	- I also added a feature for matching word including matching their Part-Of-Speech tag.<br>
 After that I added TfIdfVectorizer for an every stemmed text column and TruncatedSVD to lower the output dimensionality.<br>
 I added this features and increase number of estimator in GB Regressor.<br>
 That boosted my score to 0.481<br>

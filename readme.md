@@ -5,8 +5,8 @@ In this competition, I tried to achieve the best score in 80 hours.
 The score is RMSE. Relevance was estimated by humans on the scale from 1 to 3.
 
 
-Steps:
-# Baseline.ipynb<br>
+# Steps:
+## Baseline.ipynb<br>
 Here I made a baseline model with a humble score around 0.493
 Main ideas:
 	- Use small amount of features from train.csv + product_product.description.csv
@@ -15,7 +15,7 @@ Main ideas:
 	- Adding length of search_term and boolean feature for complete match of search term in title and description
 
 
-# lstm.ipynb <br>
+## lstm.ipynb <br>
 Actually, the whole idea of using DL was the waste of time.<br>
 Here I tried to solve the task by using LSTM for coding word sequences of search term and product_title + description
 I worked with LSTM, BI-LSTM, Merge, Dense and Dropout layers in Keras. Some models started to overfit,
@@ -26,7 +26,7 @@ One of the reason was another language model in search term and descriptions, so
 Moreover, there were not enough data to train my own embeddings.<br>
 Finally, there was no sense to use complex NN models when "simple" trees provide better results.<br>
 
-# stage2.ipynb
+## stage2.ipynb
 There I used more sophisticated text preprocessing, to deal with dimensions, numbers and some typos.<br>
 I chose LGBMRegressor, the sklearn-way wrapped gradient boosting decision tree model of LightGBM library.  <br>
 Also, I made several experiments with adding new features and adjusting LGBM hyperparameters.<br>

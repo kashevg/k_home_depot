@@ -47,5 +47,6 @@ I also added a feature to describe the difference between the position of matche
 There were two features:<br>
   * Variance between first positions of occurred words
   * Difference between maximal and minimal positions of matched words
+  
 This stage I finished with the best score 0.47476<br>
 

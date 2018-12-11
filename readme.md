@@ -50,3 +50,54 @@ There were two features:<br>
   
 This stage I finished with the best score 0.47476<br>
 
+## stage3.ipynb
+There I added different features and tuned hyperparameters.<br>
+Features:<br>
+  + words_std_title, word_std_descr variance of positions of first occurences words of search_term in product_title and description. Feature return 0 for one occurence and provide bad results for search_term with one word. Fixed in stage8
+  + len_title, len_descr words count in description and product_title
+  + last_word_title / last_word_descr (0 or 1) if the last word of search_term occures in title/descr (improved the score to 0.47395)
+  + bad_pred - a wrong feature to add. I train a classifier for predicting outliers of regressoin prediction. the score fell to 0.48... <br>
+I ended up this stage with the following parameters: colsample_bytree=0.5, learning_rate=0.03, max_depth=-1, n_estimators=700, num_leaves=80<br>
+
+## stage4.ipynb
+Update text cleaning procedures, added rules for fixing some typos, recalc all the features.<br>
+Result 0.47135<br>
+
+## stage5.ipynb
+Install fuzzywuzzy and added next related features:
+  + fuzzy_title, fuzzy_descr - fuzzy matching of searh_term string with title and description
+  + fuzzy_orig_title, fuzzy_orig_descr - the same thing for original strings<br>
+Result 0.46959 <br>
+Then I replaced token_set_ratio matching to partial_token_set_ratio to get a matching of the closest words, insted of the whole text. It had not worked and the score dropped to 0.47003.<br>
+I reloaded the files and add partial matching for the same fields as the distinct fields. And they improved the score to 0.46886<br>
+  + match_any_brand - does the word in search_term match any of the brand (did not work)
+  + first_word_title, first_word_descr - does the first word of the search_term match anything in title or description (improved the score a little bit)
+  + match_numbers_title, match_numbers_descr - does the number from search term match anything in title or description (the first field worked, the second was worthless)
+  + has_number_search_term, has_number_title, has_number_descr - does the search_term, product_title or description a number (worthless feature)
+  + complete_match_title, complete_match_descr - tried to add these features one more time (no imporving)<br>
+The stage ended with the score = 0.46747. Only ~0.001 to descirable bronze.<br>
+
+## stage6.ipynb
+Tried to add different fields, but with no success or improvement. 
+  + match_other_attrs - partial fuzzy match of search_term and all other attributes from attributes.csv
+  + spacy_similarity - to strong, but dirty feature, dropped the score to ~0.48<br>
+  
+## stage7.ipynb
+Yet another feature engineering:
+  + fuzzy_brand - fuzzy matching search_term with the brand. pointless
+  + then long gridsearch for better hyperparameters. won there ~0.0001
+  + color, bullets, material - values for the product attributes from attributes.csv 
+  + match_color, match_bullets, match_material - the ration of matching words from search_term with the corresponding feature. worked only for match_bullets
+  + is_kit, look_kit - does search_term contains the word kit, and does title contains the word kit. (worked fine)
+  + typo_search_term - is there an unknown word in search_term<br>
+Finished with the 0.46747<br>
+
+## stage8.ipynb
+Improved rules for text processing. Exclude all words waht is not digit and have only one letter.<br>
+Implemented several replcements for typos. Recalculate all other features with the new stemmed features.<br>
+Changed is_kit/look_kit to match any word from the list part|case|cover|tool|kit.<br>
+
+
+
+
+

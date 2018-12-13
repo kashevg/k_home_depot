@@ -96,8 +96,13 @@ Finished with the 0.46747<br>
 Improved rules for text processing. Exclude all words waht is not digit and have only one letter.<br>
 Implemented several replcements for typos. Recalculate all other features with the new stemmed features.<br>
 Changed is_kit/look_kit to match any word from the list part|case|cover|tool|kit.<br>
+Finished with the score about 0.4665<br>
+
+## stage9.ipynb
+Tuned hyperparametres. Lowered learning rate, added estimators, increased max_bin. THe final restuls is 0.46631. Bronze!!!<br>
 
 
+## Conclusion:
+In this competition, I've learned different tecniques of feature mining, adding them as a parametres in GBDT and model tunning. There is a space to improvement: fixing typos, finding deeper and more sophisticated features.<br>
 
-
-
+### Thank you!
